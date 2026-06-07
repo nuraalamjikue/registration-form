@@ -89,22 +89,22 @@ function validateForm() {
     error.innerHTML = "";
 
     if (name == "") {
-        error.innerHTML = "Full Name is required";
+        error.innerHTML = "cannot be empty";
         return false;
     }
 
     if (!email.includes("@") || !email.includes(".")) {
-        error.innerHTML = "Enter a valid email";
+        error.innerHTML = "must contain @ and a proper domain (e.g., user@gmail.com)";
         return false;
     }
 
     if (password.length < 6) {
-        error.innerHTML = "Password must be at least 6 characters";
+        error.innerHTML = "at least 6 characters";
         return false;
     }
 
     if (password != confirm) {
-        error.innerHTML = "Passwords do not match";
+        error.innerHTML = "must match the Password field";
         return false;
     }
 
