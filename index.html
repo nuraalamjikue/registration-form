@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Full Name">
+
+        <input type="text" id="email" placeholder="Email Address">
+
+        <input type="password" id="password" placeholder="Password">
+
+        <input type="password" id="confirm" placeholder="Confirm Password">
+
+        <input type="number" id="age" placeholder="Age">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="error"></p>
+</div>
+
+<script>
+function validateForm() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm").value;
+    let age = document.getElementById("age").value;
+    let error = document.getElementById("error");
+
+    error.innerHTML = "";
+
+    if (name == "") {
+        error.innerHTML = "Full Name is required";
+        return false;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+        error.innerHTML = "Enter a valid email";
+        return false;
+    }
+
+    if (password.length < 6) {
+        error.innerHTML = "Password must be at least 6 characters";
+        return false;
+    }
+
+    if (password != confirm) {
+        error.innerHTML = "Passwords do not match";
+        return false;
+    }
+
+    if (age < 18 || age > 60) {
+        error.innerHTML = "Age must be between 18 and 60";
+        return false;
+    }
+
+    alert("Registration Successful!");
+    return true;
+}
+</script>
+
+</body>
+</html>
